@@ -32,39 +32,42 @@
       }, 3200);
     },
 
-    // WhatsApp share ----------------------------------------------------
-    // Opens WhatsApp with a nicely formatted product message.
+    // Absolute link to this exact saree's page on the website
+    productUrl(product) {
+      try {
+        return new URL(`shop.html?product=${encodeURIComponent(product.id)}`, location.href).href;
+      } catch { return location.href; }
+    },
+
+    // SHARE button -> goes to the shop OWNER only, with the website link
     shareProduct(product) {
+      const link = Util.productUrl(product);
+      const text = encodeURIComponent(
+        `Hello ${cfg.brandName}, I'm interested in *${product.name}* ` +
+        `(${cfg.currency}${Number(product.price).toLocaleString("en-IN")}).\n${link}`
+      );
+      window.open(`https://wa.me/${cfg.whatsappNumber}?text=${text}`, "_blank");
+    },
+
+    // MESSAGE button -> let the customer forward this saree to friends & family
+    forwardToFriends(product) {
+      const link = Util.productUrl(product);
       const lines = [
         `*${product.name}*`,
         `${cfg.currency}${Number(product.price).toLocaleString("en-IN")}`,
         product.description ? `\n${product.description}` : "",
         `\nFrom *${cfg.brandName}*`,
+        `🔗 ${link}`,
         `📲 Order on WhatsApp: https://wa.me/${cfg.whatsappNumber}`,
-        product.image_url && !String(product.image_url).startsWith("data:")
-          ? `\n${product.image_url}` : "",
       ].filter(Boolean);
       const text = encodeURIComponent(lines.join("\n"));
-
-      // Native share sheet first (mobile), else WhatsApp web/app
+      // Native share sheet first (mobile lets them pick any contact), else WhatsApp picker
       if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
-        navigator.share({
-          title: product.name,
-          text: lines.join("\n"),
-          url: product.image_url || location.href,
-        }).catch(() => window.open(`https://wa.me/?text=${text}`, "_blank"));
+        navigator.share({ title: product.name, text: lines.join("\n"), url: link })
+          .catch(() => window.open(`https://wa.me/?text=${text}`, "_blank"));
       } else {
         window.open(`https://wa.me/?text=${text}`, "_blank");
       }
-    },
-
-    // "Enquire" -> message the shop owner directly about a product
-    enquire(product) {
-      const text = encodeURIComponent(
-        `Hello ${cfg.brandName}, I'm interested in *${product.name}* ` +
-        `(${cfg.currency}${Number(product.price).toLocaleString("en-IN")}). Is it available?`
-      );
-      window.open(`https://wa.me/${cfg.whatsappNumber}?text=${text}`, "_blank");
     },
 
     // Shared navbar -----------------------------------------------------
@@ -110,7 +113,7 @@
     cardHTML(p) {
       const img = p.image_url || "https://via.placeholder.com/400x500?text=Saree";
       return `
-        <article class="card">
+        <article class="card" data-id="${p.id}">
           <div class="card__media">
             <span class="card__tag">${Util.esc(p.category_name)}</span>
             <img src="${Util.esc(img)}" alt="${Util.esc(p.name)}" loading="lazy" />
@@ -123,8 +126,8 @@
               <span class="card__price">${Util.money(p.price)}</span>
             </div>
             <div class="card__actions">
-              <button class="btn btn--wa" data-share="${p.id}">Share</button>
-              <button class="icon-btn" data-enquire="${p.id}" title="Enquire on WhatsApp">💬</button>
+              <button class="btn btn--wa" data-share="${p.id}" title="Share with the shop on WhatsApp">Share</button>
+              <button class="icon-btn" data-forward="${p.id}" title="Send to friends &amp; family">📤</button>
             </div>
           </div>
         </article>`;
@@ -135,8 +138,8 @@
       const byId = Object.fromEntries(products.map((p) => [String(p.id), p]));
       host.querySelectorAll("[data-share]").forEach((b) =>
         b.addEventListener("click", () => Util.shareProduct(byId[b.dataset.share])));
-      host.querySelectorAll("[data-enquire]").forEach((b) =>
-        b.addEventListener("click", () => Util.enquire(byId[b.dataset.enquire])));
+      host.querySelectorAll("[data-forward]").forEach((b) =>
+        b.addEventListener("click", () => Util.forwardToFriends(byId[b.dataset.forward])));
     },
   };
 

@@ -63,6 +63,21 @@
     Util.wireCards(grid, products);
   }
 
+  // Deep link from a shared "Share" message: ?product=<id>
+  const productParam = new URLSearchParams(location.search).get("product");
+  if (productParam) activeCat = "all"; // make sure it's visible regardless of category
+
   renderToolbar();
   renderGrid();
+
+  if (productParam) {
+    requestAnimationFrame(() => {
+      const card = grid.querySelector(`[data-id="${(window.CSS && CSS.escape) ? CSS.escape(productParam) : productParam}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.classList.add("card--flash");
+        setTimeout(() => card.classList.remove("card--flash"), 2400);
+      }
+    });
+  }
 })();
