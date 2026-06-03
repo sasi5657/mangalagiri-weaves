@@ -23,9 +23,9 @@ window.APP_CONFIG = {
   // 1) WhatsApp business number (international format, no '+')
   whatsappNumber: "917990399926",
 
-  // 2) Supabase project keys — leave blank for demo mode
-  supabaseUrl: "",      // e.g. "https://abcdxyz.supabase.co"
-  supabaseAnonKey: "",  // e.g. "eyJhbGciOi..."
+  // 2) Supabase project keys — LIVE (shared cloud catalog)
+  supabaseUrl: "https://jbogocoqpujsepoxirkn.supabase.co",
+  supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impib2dvY29xcHVqc2Vwb3hpcmtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NTI0MTEsImV4cCI6MjA5NjAyODQxMX0.qaliI3n_SJBXjXTGRC_Sc7rPEG2mhP4oKqEyPvfNF-A",
 
   // 3) The owner account (only this email can add/edit products)
   ownerEmail: "bandarusivanageswaraohandlooms@gmail.com",
