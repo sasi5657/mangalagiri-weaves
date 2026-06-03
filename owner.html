@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Dashboard · THE MANGALAGIRI WEAVES</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header data-nav></header>
+
+  <main class="wrap" style="padding:40px 0 60px" data-gate hidden>
+    <div class="section__head" style="text-align:left;margin-bottom:26px;max-width:none">
+      <span class="eyebrow eyebrow--left">Owner Dashboard</span>
+      <h2 style="color:var(--maroon-deep);font-size:34px;margin-top:10px">Manage Your Storefront</h2>
+    </div>
+
+    <!-- stats -->
+    <div class="stat-row">
+      <div class="stat"><b data-stat-products>0</b><span>Products listed</span></div>
+      <div class="stat"><b data-stat-cats>0</b><span>Categories</span></div>
+      <div class="stat"><b data-stat-stock>0</b><span>In stock</span></div>
+    </div>
+
+    <div class="owner">
+      <!-- left: add product + categories -->
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="panel">
+          <h3>Add a Saree</h3>
+          <p class="panel__sub">List a new product with photo, price and category.</p>
+          <form data-product-form>
+            <div class="field">
+              <label>Photo</label>
+              <label class="drop" data-drop>
+                <span data-drop-text>📷 Click to upload a saree photo</span>
+                <input type="file" accept="image/*" hidden data-image />
+              </label>
+            </div>
+            <div class="field">
+              <label for="pname">Saree name</label>
+              <input id="pname" data-name type="text" placeholder="e.g. Royal Maroon Zari Saree" required />
+            </div>
+            <div class="field">
+              <label for="pdesc">Description</label>
+              <textarea id="pdesc" data-desc placeholder="Fabric, border, colour, length…"></textarea>
+            </div>
+            <div class="field--row">
+              <div class="field">
+                <label for="pprice">Price (₹)</label>
+                <input id="pprice" data-price type="number" min="0" step="1" placeholder="2499" required />
+              </div>
+              <div class="field">
+                <label for="pcat">Category</label>
+                <select id="pcat" data-cat required></select>
+              </div>
+            </div>
+            <label style="display:flex;gap:10px;align-items:center;font-size:14px;margin-bottom:16px;cursor:pointer">
+              <input type="checkbox" data-instock checked style="width:auto" /> In stock
+            </label>
+            <button class="btn btn--gold btn--block" type="submit" data-save>Add Saree</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Categories</h3>
+          <p class="panel__sub">Group your sarees by weave or occasion.</p>
+          <form data-cat-form style="display:flex;gap:10px">
+            <input data-cat-name type="text" placeholder="New category name" style="flex:1;font-family:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px" required />
+            <button class="btn btn--maroon" type="submit">Add</button>
+          </form>
+          <div class="taglist" data-cat-list></div>
+        </div>
+      </div>
+
+      <!-- right: product list -->
+      <div class="panel">
+        <h3>Your Collection</h3>
+        <p class="panel__sub">Edit prices, toggle stock or remove sarees.</p>
+        <div class="admin-list" data-admin-list>
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- blocked state -->
+  <main class="wrap" style="padding:90px 0" data-blocked hidden>
+    <div class="empty">
+      <div class="big">🔒</div>
+      <h2 style="color:var(--maroon-deep);margin-bottom:8px">Owner access only</h2>
+      <p style="margin-bottom:22px">Please sign in with the owner account to manage products.</p>
+      <a href="login.html" class="btn btn--gold">Owner Sign In</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/owner.js"></script>
+</body>
+</html>

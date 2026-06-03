@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Login · THE MANGALAGIRI WEAVES</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header data-nav></header>
+
+  <section class="auth">
+    <!-- left: artwork -->
+    <aside class="auth__art">
+      <div>
+        <img class="auth__crest" src="assets/logo.png" alt="THE MANGALAGIRI WEAVES — Since 1960" />
+        <span class="eyebrow eyebrow--left">Private · Store Owner</span>
+        <h2 data-art-title>The Owner's Atelier</h2>
+        <p data-art-sub>Sign in to manage your storefront — add new sarees, set prices, organise categories and share product links with your customers on WhatsApp.</p>
+      </div>
+      <ul class="auth__list" data-art-list>
+        <li><b>✦</b> Add &amp; edit products and prices</li>
+        <li><b>✦</b> Create your own categories</li>
+        <li><b>✦</b> Share product links to customers</li>
+      </ul>
+      <p class="muted" style="position:relative;color:rgba(255,255,255,.55);font-size:13px">Customers don't need an account — they simply browse and receive the links you share.</p>
+    </aside>
+
+    <!-- right: form -->
+    <div class="auth__form">
+      <div class="auth__card">
+        <div class="panel">
+          <h3 data-form-title>Owner Sign In</h3>
+          <p class="panel__sub" data-form-sub>Access your store dashboard.</p>
+
+          <form data-auth-form>
+            <div class="field">
+              <label for="email">Owner email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="bandarusivanageswaraohandlooms@gmail.com" required />
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" minlength="6" required />
+            </div>
+            <button class="btn btn--gold btn--block" type="submit" data-submit>Sign In</button>
+          </form>
+
+          <p class="auth__switch">
+            <span data-switch-text>First time?</span>
+            <button type="button" data-switch>Create the owner account</button>
+          </p>
+
+          <div class="auth__hint" data-hint></div>
+
+          <p style="text-align:center;margin-top:18px;font-size:13px">
+            <a href="shop.html" style="color:var(--ink-soft)">← Back to the collection</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

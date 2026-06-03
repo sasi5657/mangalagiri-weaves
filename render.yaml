@@ -1,0 +1,14 @@
+# Render Blueprint — static site for THE MANGALAGIRI WEAVES
+# Render will auto-detect this when you connect the repo (Blueprint),
+# or you can configure the same values manually in the dashboard:
+#   Build Command: (leave blank)   Publish Directory: .
+services:
+  - type: web
+    name: the-mangalagiri-weaves
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600

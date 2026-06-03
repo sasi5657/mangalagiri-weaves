@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collection · THE MANGALAGIRI WEAVES</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header data-nav></header>
+
+  <!-- page banner -->
+  <section style="background:linear-gradient(160deg,var(--maroon-deep),var(--maroon));color:#fff;padding:56px 0">
+    <div class="wrap" style="text-align:center">
+      <span class="eyebrow" style="color:var(--gold-bright)">The Collection</span>
+      <h1 style="font-size:clamp(30px,5vw,52px);color:#fff;margin-top:12px">Handwoven Mangalagiri Sarees</h1>
+      <p class="muted" style="color:rgba(255,255,255,.8);margin-top:8px">Tap <b style="color:var(--gold-bright)">Share</b> to send any saree to family on WhatsApp.</p>
+    </div>
+  </section>
+
+  <main class="wrap section" style="padding-top:42px">
+    <!-- filters -->
+    <div class="toolbar" data-toolbar></div>
+
+    <!-- product grid -->
+    <div class="grid" data-grid>
+      <div class="spinner"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__bar" style="border:none;margin:0;padding:0">© 2026 THE MANGALAGIRI WEAVES · Handwoven with love in Andhra Pradesh</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

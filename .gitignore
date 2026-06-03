@@ -1,0 +1,15 @@
+# Claude memory / local agent files
+.claude/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+
+# Logs
+*.log
