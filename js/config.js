@@ -33,6 +33,16 @@ window.APP_CONFIG = {
   // Storage bucket name in Supabase (created in setup)
   storageBucket: "product-images",
 
+  // The 5 standard categories — auto-created in the Owner dashboard so the
+  // owner can pick them when adding a saree. These match the homepage cards.
+  standardCategories: [
+    "Cotton by Pattu Saree",
+    "Pure Pattu Saree",
+    "Cotton by Cotton Saree",
+    "Pattu Dress Materials",
+    "Cotton Dress Materials",
+  ],
+
   // Currency symbol used across the site
   currency: "₹",
 };

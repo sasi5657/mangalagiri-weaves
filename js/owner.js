@@ -207,9 +207,23 @@
     } catch (err) { Util.toast(err.message, "err"); }
   }
 
+  // Make sure the 5 standard categories always exist in the dashboard.
+  async function ensureStandardCategories() {
+    const standard = APP_CONFIG.standardCategories || [];
+    if (!standard.length) return;
+    const have = new Set(categories.map((c) => c.name.trim().toLowerCase()));
+    const missing = standard.filter((n) => !have.has(n.trim().toLowerCase()));
+    if (!missing.length) return;
+    for (const name of missing) {
+      try { await Store.addCategory(name); } catch (_) { /* already exists / race — ignore */ }
+    }
+    categories = await Store.getCategories();
+  }
+
   // ----- initial load -----
   try {
     [categories, products] = await Promise.all([Store.getCategories(), Store.getProducts()]);
+    await ensureStandardCategories();
     renderCats();
     renderProducts();
   } catch (err) {
