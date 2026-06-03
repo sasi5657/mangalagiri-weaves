@@ -174,7 +174,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 /* =====================================================================
    Category strip
    ===================================================================== */
-.cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
 .cat-card {
   position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5;
   box-shadow: var(--shadow-sm); cursor: pointer;
@@ -184,8 +184,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .cat-card:hover img { opacity: .7; transform: scale(1.06); }
 .cat-card__body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; color: #fff; z-index: 1;
   background: linear-gradient(to top, rgba(40,8,15,.85), transparent 60%); }
-.cat-card__body h3 { font-size: 22px; }
-.cat-card__body span { font-size: 13px; color: var(--gold-bright); letter-spacing: 1px; }
+.cat-card__body h3 { font-size: 19px; line-height: 1.2; }
+.cat-card__body span { font-size: 11px; color: var(--gold-bright); letter-spacing: 2px; }
 
 /* =====================================================================
    Product grid + cards
@@ -382,7 +382,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 }
 @media (max-width: 560px) {
   .nav__links { display: none; }
-  .cats { grid-template-columns: 1fr; }
+  .cats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cat-card__body { padding: 16px; }
+  .cat-card__body h3 { font-size: 16px; }
   .stat-row { grid-template-columns: 1fr; }
   .field--row { grid-template-columns: 1fr; }
   .search { margin-left: 0; width: 100%; }
