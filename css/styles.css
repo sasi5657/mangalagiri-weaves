@@ -171,6 +171,15 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 }
 .hero__art .float b { color: var(--maroon); font-family: var(--font-display); }
 
+/* Heritage loom gallery */
+.heritage-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.heritage-gallery img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: 14px; border: 1.5px solid var(--gold); box-shadow: var(--shadow-sm);
+}
+.heritage-gallery .big { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+.heritage-gallery .small { aspect-ratio: 3 / 4; }
+
 /* =====================================================================
    Category strip
    ===================================================================== */
@@ -342,7 +351,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
    Footer
    ===================================================================== */
 .footer { background: var(--maroon-deep); color: rgba(255,255,255,.75); padding: 56px 0 28px; margin-top: 40px; }
-.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 36px; }
+.footer__service a { font-size: 13.5px; word-break: break-word; }
 .footer h4 { font-family: var(--font-display); color: var(--gold-bright); margin-bottom: 14px; font-size: 18px; }
 .footer a { display: block; padding: 4px 0; color: rgba(255,255,255,.7); transition: .2s; }
 .footer a:hover { color: var(--gold-bright); }
