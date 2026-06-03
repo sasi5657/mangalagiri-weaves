@@ -40,6 +40,7 @@
         `${cfg.currency}${Number(product.price).toLocaleString("en-IN")}`,
         product.description ? `\n${product.description}` : "",
         `\nFrom *${cfg.brandName}*`,
+        `📲 Order on WhatsApp: https://wa.me/${cfg.whatsappNumber}`,
         product.image_url && !String(product.image_url).startsWith("data:")
           ? `\n${product.image_url}` : "",
       ].filter(Boolean);
